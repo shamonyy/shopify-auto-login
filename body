@@ -1,0 +1,28 @@
+import requests
+
+def login_to_your_store():
+    # セッションを開始
+    session = requests.Session()
+
+    # ログインページのURL
+    login_page_url = 'https://accounts.shopify.com/store-login'
+
+    # ログインページにアクセス
+    response = session.get(login_page_url)
+    print("Accessed login page:", response.status_code)
+
+    # ログイン情報
+    login_data = {
+        'username': 'your_username',
+        'password': 'your_password'
+    }
+
+    # ログイン試行
+    login_response = session.post(login_page_url, data=login_data)
+    print("Login attempt:", login_response.status_code)
+    if login_response.ok:
+        print("Login successful!")
+    else:
+        print("Login failed!")
+
+login_to_your_store()
